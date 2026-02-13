@@ -1,54 +1,52 @@
 # MFL Dialogue System
 
-![ebd272a09361e8158e12c3204363cb32](https://github.com/user-attachments/assets/412d9945-8c66-4996-8152-2ec8750d6985)
+Sistema moderno de diálogos para NPCs en FiveM con diseño elegante y funcionalidad completa.
 
-A modern and elegant NPC dialogue system for FiveM with a clean design and full functionality.
+## Características
 
-## Features
+✅ Diseño moderno y elegante con tema oscuro  
+✅ Soporte para múltiples opciones de diálogo  
+✅ Integración con ox_target o interacción por distancia  
+✅ Sistema de eventos para conectar con trabajos, tiendas, etc.  
+✅ Totalmente configurable  
+✅ Animaciones suaves  
+✅ Soporte para teclado numérico  
 
-✅ Modern and elegant design with a dark theme  
-✅ Support for multiple dialogue options  
-✅ Integration with `ox_target` or distance-based interaction  
-✅ Event system to connect with jobs, shops, and more  
-✅ Fully configurable  
-✅ Smooth animations  
-✅ Numeral key support for quick selection
+## Instalación
 
-## Installation
+1. Coloca el recurso en tu carpeta `resources/[add]/`
+2. Agrega `ensure mfl-dialogue` a tu `server.cfg`
+3. Configura tus NPCs en `config/config.lua`
+4. Reinicia el servidor
 
-1. Place the resource in your `resources/[mfl]/` folder.
-2. Add `ensure mfl-dialogue` to your `server.cfg`.
-3. Configure your NPCs in `config/config.lua`.
-4. Restart the server or start the resource.
+## Configuración
 
-## Configuration
+### Agregar un NPC con diálogo
 
-### Adding an NPC with Dialogue
-
-Edit `config/config.lua` and add a new NPC to `Config.NPCs`:
+Edita `config/config.lua` y agrega un nuevo NPC:
 
 ```lua
 Config.NPCs = {
-    ['my_npc_id'] = {
-        name = 'NPC name',
-        model = 'ped_model', -- Example: 'mp_m_shopkeep_01'
+    ['mi_npc'] = {
+        name = 'Nombre del NPC',
+        model = 'modelo_del_ped', -- Ejemplo: 'mp_m_shopkeep_01'
         coords = vector4(x, y, z, heading),
         dialogue = {
-            text = 'Dialogue text spoken by the NPC',
+            text = 'Texto del diálogo que dirá el NPC',
             options = {
                 {
-                    label = 'Option 1',
-                    description = 'Description of the option',
+                    label = 'Opción 1',
+                    description = 'Descripción de la opción',
                     action = function()
-                        -- Code executed when selecting this option
-                        TriggerEvent('my_event')
+                        -- Código que se ejecutará al seleccionar esta opción
+                        TriggerEvent('mi_evento')
                     end
                 },
                 {
-                    label = 'Option 2',
-                    description = 'Another description',
+                    label = 'Opción 2',
+                    description = 'Otra descripción',
                     action = function()
-                        -- Another code block
+                        -- Otro código
                     end
                 }
             }
@@ -57,11 +55,11 @@ Config.NPCs = {
 }
 ```
 
-## Usage Examples
+## Ejemplos de uso
 
-### Garbage Job Integration (qbx_garbagejob)
+### Trabajo de basura (qbx_garbagejob)
 
-The `garbage_boss` NPC comes pre-integrated and ready to use:
+El NPC `garbage_boss` ya está configurado y listo para usar:
 
 ```lua
 ['garbage_boss'] = {
@@ -69,18 +67,18 @@ The `garbage_boss` NPC comes pre-integrated and ready to use:
     model = 's_m_y_garbage',
     coords = vector4(-321.45, -1545.86, 31.02, 180.0),
     dialogue = {
-        text = 'Hello! Looking for work picking up trash? It pays well and it is easy.',
+        text = '¡Hola! ¿Buscas trabajo recogiendo basura? Paga bien y es fácil.',
         options = {
             {
-                label = 'Start Route',
-                description = 'Begin working ($250 deposit)',
+                label = 'Iniciar ruta',
+                description = 'Comenzar a trabajar ($250 depósito)',
                 action = function()
                     TriggerEvent('qb-garbagejob:client:RequestRoute')
                 end
             },
             {
-                label = 'Collect Pay',
-                description = 'Collect your salary',
+                label = 'Cobrar paga',
+                description = 'Recoger tu salario',
                 action = function()
                     TriggerEvent('qb-garbagejob:client:RequestPaycheck')
                 end
@@ -90,95 +88,89 @@ The `garbage_boss` NPC comes pre-integrated and ready to use:
 }
 ```
 
-This NPC replaces the need for the city hall for garbage jobs and allows:
-- ✅ Starting a garbage route
-- ✅ Collecting salary
-- ✅ Getting job information
+Este NPC reemplaza la necesidad del cityhall y permite:
+- ✅ Iniciar una ruta de basura
+- ✅ Cobrar el salario
+- ✅ Ver información del trabajo
 
-### Opening a Shop
+### Abrir una tienda
 
 ```lua
 {
-    label = 'Buy Items',
-    description = 'Open the local shop',
+    label = 'Comprar',
+    description = 'Abrir la tienda',
     action = function()
         exports.ox_inventory:openInventory('shop', { type = '24_7' })
     end
 }
 ```
 
-### Starting a Job
+### Iniciar un trabajo
 
 ```lua
 {
-    label = 'Apply for Job',
-    description = 'Start working as a mechanic',
+    label = 'Solicitar trabajo',
+    description = 'Trabajar como mecánico',
     action = function()
         TriggerEvent('qb-jobs:client:startJob', 'mechanic')
     end
 }
 ```
 
-### Showing a Notification
+### Mostrar notificación
 
 ```lua
 {
-    label = 'Information',
-    description = 'Get more details',
+    label = 'Información',
+    description = 'Obtener información',
     action = function()
         lib.notify({
-            title = 'Info',
-            description = 'This is an information message from the NPC.',
+            title = 'Título',
+            description = 'Mensaje',
             type = 'info'
         })
     end
 }
 ```
 
-### Opening a Context Menu (ox_lib)
+### Abrir un menú
 
 ```lua
 {
-    label = 'See Options',
-    description = 'Open a menu with more options',
+    label = 'Ver opciones',
+    description = 'Abrir menú de opciones',
     action = function()
         lib.registerContext({
-            id = 'my_menu',
-            title = 'Options Menu',
+            id = 'mi_menu',
+            title = 'Mi Menú',
             options = {
-                {
-                    title = 'Sub-option 1',
-                    description = 'Do something else',
-                    onSelect = function()
-                        print('Sub-option selected')
-                    end
-                }
+                -- Opciones del menú
             }
         })
-        lib.showContext('my_menu')
+        lib.showContext('mi_menu')
     end
 }
 ```
 
-## Controls
+## Controles
 
-- **Left Mouse Click**: Select an option.
-- **Numeral Keys (1-4)**: Quick option selection.
-- **ESC**: Close the dialogue.
+- **Click izquierdo**: Seleccionar opción
+- **Teclas numéricas (1-4)**: Seleccionar opción rápidamente
+- **ESC**: Cerrar diálogo
 
-## Exports
+## Exportaciones
 
-### Open dialogue from another resource
+### Abrir un diálogo desde otro recurso
 
 ```lua
-exports['mfl-dialogue']:OpenDialogue('npc_id', npcData)
+exports['mfl-dialogue']:OpenDialogue('id_del_npc', Config.NPCs['id_del_npc'])
 ```
 
-## Dependencies
+## Dependencias
 
-- [ox_lib](https://github.com/overextended/ox_lib)
-- [ox_target](https://github.com/overextended/ox_target) (optional, if `Config.UseTarget = true`)
+- ox_lib
+- ox_target (opcional, si Config.UseTarget = true)
 
-## Credits
+## Créditos
 
-Created by **MFL Scripts**
+Creado por MFL Scripts

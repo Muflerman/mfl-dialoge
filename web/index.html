@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MFL Dialogue</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="dialogue-container" style="display: none;">
+        <div class="dialogue-box">
+            <!-- Header con nombre del NPC -->
+            <div class="dialogue-header">
+                <span id="npc-name">John Doe</span>
+            </div>
+            
+            <!-- Texto del diálogo -->
+            <div class="dialogue-text">
+                <p id="dialogue-message">Hej! Vad kan jag hjälpa dig med idag?</p>
+            </div>
+            
+            <!-- Opciones del diálogo -->
+            <div class="dialogue-options" id="dialogue-options">
+                <!-- Las opciones se generarán dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
