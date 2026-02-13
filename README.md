@@ -1,5 +1,6 @@
 # MFL Dialogue System
-![Uploading ebd272a09361e8158e12c3204363cb32.jpg…]()
+
+![ebd272a09361e8158e12c3204363cb32](https://github.com/user-attachments/assets/412d9945-8c66-4996-8152-2ec8750d6985)
 
 A modern and elegant NPC dialogue system for FiveM with a clean design and full functionality.
 
