@@ -1,4 +1,5 @@
 # MFL Dialogue System
+![ebd272a09361e8158e12c3204363cb32](https://github.com/user-attachments/assets/0d789b5e-59e8-4fb0-9df8-6d14ebbdbf8c)
 
 Sistema moderno de diálogos para NPCs en FiveM con diseño elegante y funcionalidad completa.
 
@@ -174,3 +175,4 @@ exports['mfl-dialogue']:OpenDialogue('id_del_npc', Config.NPCs['id_del_npc'])
 ## Créditos
 
 Creado por MFL Scripts
+
